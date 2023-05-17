@@ -1,5 +1,10 @@
 package com.microservice.festejandoando.Model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table (name = "Client")
 public class Client extends PersistentObject {
 
 	private String name;

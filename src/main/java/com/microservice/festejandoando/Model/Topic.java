@@ -1,7 +1,11 @@
 package com.microservice.festejandoando.Model;
 
 import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table (name = "Topic")
 public class Topic extends PersistentObject {
 
 	private String name;
