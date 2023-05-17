@@ -1,11 +1,7 @@
 package com.microservice.festejandoando.Model;
 
 import java.util.ArrayList;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
-@Entity
-@Table (name = "ShoppingCart")
 public class ShoppingCart {
 
 	ArrayList <Topic> topic = new ArrayList <> ();

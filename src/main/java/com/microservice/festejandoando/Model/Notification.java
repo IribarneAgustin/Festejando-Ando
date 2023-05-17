@@ -1,10 +1,5 @@
 package com.microservice.festejandoando.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
-@Entity
-@Table (name = "Notification")
 public class Notification {
 
 	private Boolean isSent;
