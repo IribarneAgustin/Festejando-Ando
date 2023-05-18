@@ -2,8 +2,11 @@ package com.microservice.festejandoando.Model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-
+@Entity
+@Table (name = "Booking")
 public class Booking extends PersistentObject{
 
 	private LocalDate date;

@@ -1,5 +1,10 @@
 package com.microservice.festejandoando.Model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table (name = "Opinion")
 public class Opinion {
 
 	private String comments;

@@ -1,7 +1,11 @@
 package com.microservice.festejandoando.Model;
 
 import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table (name = "Suggestion")
 public class Suggestion extends PersistentObject{
 
 	private ArrayList<Article> articles = new ArrayList <> ();

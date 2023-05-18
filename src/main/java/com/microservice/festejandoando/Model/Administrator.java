@@ -1,5 +1,10 @@
 package com.microservice.festejandoando.Model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table (name = "Administrator")
 public class Administrator extends PersistentObject{
 
 	private String username;
@@ -7,6 +12,7 @@ public class Administrator extends PersistentObject{
 	
 	public Administrator() {
 	}
+	
 	public Administrator(Long id, Boolean active, String username, String password) {
 		super(id, active);
 		this.username = username;

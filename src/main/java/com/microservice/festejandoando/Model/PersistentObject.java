@@ -1,7 +1,10 @@
 package com.microservice.festejandoando.Model;
 
+import javax.persistence.Id;
+
 public abstract class PersistentObject {
 
+	@Id
 	private Long id;
 	private Boolean active;
 	
