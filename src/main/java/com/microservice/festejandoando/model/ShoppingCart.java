@@ -1,10 +1,10 @@
-package com.microservice.festejandoando.Model;
+package com.microservice.festejandoando.model;
 
 import java.util.ArrayList;
 
 public class ShoppingCart {
 
-	ArrayList <Topic> topic = new ArrayList <> ();
+	ArrayList <Topic> topic = new ArrayList <>();
 
 	public ShoppingCart() {
 	}

@@ -1,7 +1,6 @@
-package com.microservice.festejandoando.Model;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
+package com.microservice.festejandoando.model;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
 @Table (name = "Client")

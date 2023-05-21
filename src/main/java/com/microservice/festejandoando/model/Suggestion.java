@@ -1,13 +1,19 @@
-package com.microservice.festejandoando.Model;
+package com.microservice.festejandoando.model;
 
 import java.util.ArrayList;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
 
 @Entity
 @Table (name = "Suggestion")
 public class Suggestion extends PersistentObject{
 
+	@OneToMany
+	@JoinColumn(name = "suggestion_id")
 	private ArrayList<Article> articles = new ArrayList <> ();
 
 	public Suggestion() {
