@@ -1,16 +1,23 @@
-package com.microservice.festejandoando.Model;
-
+package com.microservice.festejandoando.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
 
 @Entity
 @Table (name = "Booking")
 public class Booking extends PersistentObject{
 
 	private LocalDate date;
+	@ManyToOne
+	@JoinColumn(name = "client_id")
 	private Client client;
+	@OneToMany
+	@JoinColumn(name = "booking_id") 
 	private ArrayList<Topic> topic = new ArrayList<>();
 	private Long deposit;
 	private Boolean isPaid;
