@@ -1,4 +1,4 @@
-package com.microservice.festejandoando.Model;
+package com.microservice.festejandoando.model;
 
 public class Notification {
 

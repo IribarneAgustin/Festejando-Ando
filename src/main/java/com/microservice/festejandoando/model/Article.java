@@ -1,7 +1,8 @@
-package com.microservice.festejandoando.Model;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
+package com.microservice.festejandoando.model;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table (name = "Article")
@@ -9,6 +10,8 @@ public class Article extends PersistentObject {
 
 	private String name;
 	private String image;
+	@ManyToOne
+	@JoinColumn(name = "topic_id")// foreing_key column name
 	private Topic topic;
 	
 
