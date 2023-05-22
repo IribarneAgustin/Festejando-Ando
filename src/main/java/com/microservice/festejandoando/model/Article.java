@@ -10,6 +10,7 @@ public class Article extends PersistentObject {
 
 	private String name;
 	private String image;
+	private Boolean suggested;
 	@ManyToOne
 	@JoinColumn(name = "topic_id")// foreing_key column name
 	private Topic topic;
@@ -18,11 +19,12 @@ public class Article extends PersistentObject {
 	public Article() {
 	}
 
-	public Article(Long id, Boolean active, String name, String image, Topic topic) {
+	public Article(Long id, Boolean active, String name, String image, Topic topic, Boolean suggested) {
 		super(id, active);
 		this.name = name;
 		this.image = image;
 		this.topic = topic;
+		this.suggested = suggested;
 	}
 
 	public String getName() {
@@ -47,6 +49,14 @@ public class Article extends PersistentObject {
 
 	public void setTopic(Topic topic) {
 		this.topic = topic;
+	}
+
+	public Boolean getSuggested() {
+		return suggested;
+	}
+
+	public void setSuggested(Boolean suggested) {
+		this.suggested = suggested;
 	}
 
 	@Override
