@@ -19,8 +19,8 @@ public class TopicService {
 
 		return topicRepository.save(topic);
 	}
-/*
-	public Object findbyId(Long id) {
+
+	public Optional<Topic> findbyId(Long id) {
 
 		return topicRepository.findById(id);
 	}
@@ -32,7 +32,6 @@ public class TopicService {
 
 	public void deleteById(Long id) {
 		topicRepository.deleteById(id);
-
-	}*/
+	}
 
 }

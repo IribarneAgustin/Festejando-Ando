@@ -1,6 +1,7 @@
 package com.microservice.festejandoando.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,25 +29,26 @@ public class TopicController {
 	public Topic createTopic(@RequestBody Topic topic) {
 		return topicService.save(topic);
 	}
-/*
+
 	@GetMapping
 	public List<Topic> getAllTopics() {
 		return topicService.findAll();
 	}
-
-	@GetMapping
+	
+	@GetMapping("/{id}")
 	public Object getTopicById(@PathVariable Long id) {
-		return (Topic) topicService.findbyId(id);
-	}*/
+		return topicService.findbyId(id);
+	}
 
 	
-/*
+
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateTopic(@PathVariable Long id, @RequestBody Topic topicDetails) {
-		Topic topic = (Topic) topicService.findbyId(id);
-		if (topic != null) {
+		Optional<Topic> optionalTopic  = topicService.findbyId(id);
+		if (optionalTopic.isPresent()) {
+			 Topic topic = optionalTopic.get();
 			topic.setName(topicDetails.getName());
-			topic.setSuggestions(topicDetails.getSuggestions());
+			topic.setSuggestionsIds(topicDetails.getSuggestionsIds());
 			topic.setImages(topicDetails.getImages());
 			Topic updatedTopic = topicService.save(topic);
 			return ResponseEntity.ok(updatedTopic);
@@ -57,8 +59,9 @@ public class TopicController {
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteTopicById(@PathVariable Long id) {
+	public ResponseEntity<String> deleteTopicById(@PathVariable Long id) {
 		topicService.deleteById(id);
-		;
-	}*/
+		String successMessage = "El topic con ID " + id + " ha sido eliminado exitosamente.";
+		return ResponseEntity.ok(successMessage);
+	}
 }
