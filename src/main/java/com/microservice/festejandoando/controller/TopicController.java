@@ -24,7 +24,7 @@ public class TopicController {
 
 	@Autowired
 	private TopicService topicService;
-	
+
 	@PostMapping("/save")
 	public Topic createTopic(@RequestBody Topic topic) {
 		return topicService.save(topic);
@@ -34,34 +34,19 @@ public class TopicController {
 	public List<Topic> getAllTopics() {
 		return topicService.findAll();
 	}
-	
+
 	@GetMapping("/{id}")
 	public Object getTopicById(@PathVariable Long id) {
 		return topicService.findbyId(id);
 	}
 
-	
-
 	@PutMapping("/{id}")
 	public ResponseEntity<Object> updateTopic(@PathVariable Long id, @RequestBody Topic topicDetails) {
-		Optional<Topic> optionalTopic  = topicService.findbyId(id);
-		if (optionalTopic.isPresent()) {
-			 Topic topic = optionalTopic.get();
-			topic.setName(topicDetails.getName());
-			topic.setSuggestionsIds(topicDetails.getSuggestionsIds());
-			topic.setImages(topicDetails.getImages());
-			Topic updatedTopic = topicService.save(topic);
-			return ResponseEntity.ok(updatedTopic);
-		} else {
-			String errorMessage = "Topic with ID " + id + " not found.";
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
-		}
+		return topicService.updateTopic(id, topicDetails);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> deleteTopicById(@PathVariable Long id) {
-		topicService.deleteById(id);
-		String successMessage = "El topic con ID " + id + " ha sido eliminado exitosamente.";
-		return ResponseEntity.ok(successMessage);
+	public ResponseEntity<Void> deleteTopicById(@PathVariable Long id) {
+		return topicService.deleteById(id);
 	}
 }
