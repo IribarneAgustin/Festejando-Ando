@@ -28,4 +28,12 @@ public class AdminUserDetailsServiceImpl implements UserDetailsService {
             admin.getPassword(), Collections.singletonList(() -> "ROLE_ADMIN")
         );
     }
+
+    public Administrator findByUsername(String username){
+        return adminRepository.findByUsername(username);
+    }
+
+    public Administrator save(Administrator admin){
+       return adminRepository.save(admin);        
+    }
 }

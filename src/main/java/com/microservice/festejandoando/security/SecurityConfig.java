@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import com.microservice.festejandoando.model.Administrator;
-import com.microservice.festejandoando.repository.IAdminRepository;
+import com.microservice.festejandoando.service.AdminUserDetailsServiceImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -18,9 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends GlobalAuthenticationConfigurerAdapter  {
 
     @Autowired
-    private com.microservice.festejandoando.service.AdminUserDetailsServiceImpl adminUserDetailsServiceImpl;
-    @Autowired
-    IAdminRepository AdminRepository;
+    private AdminUserDetailsServiceImpl adminUserDetailsServiceImpl;
     
 
     @Bean
@@ -44,6 +42,7 @@ public class SecurityConfig extends GlobalAuthenticationConfigurerAdapter  {
         initAdmin();
     }
 
+    //We save an admin for default
     public void initAdmin() {
         String encodedPassword = passwordEncoder().encode("123");
         String username = "admin";
@@ -51,8 +50,8 @@ public class SecurityConfig extends GlobalAuthenticationConfigurerAdapter  {
         admin.setActive(true);
         admin.setPassword(encodedPassword);
         admin.setUsername(username);
-        if(AdminRepository.findByUsername(username) == null){ 
-            AdminRepository.save(admin);
+        if(adminUserDetailsServiceImpl.findByUsername(username) == null){ 
+            adminUserDetailsServiceImpl.save(admin);
         };
     }
 }
