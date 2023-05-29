@@ -32,19 +32,21 @@ public class TopicService {
 		return topicRepository.findAll();
 	}
 
-	public ResponseEntity<Object> updateTopic(Long id, Topic topicDetails) {
+	public ResponseEntity<String> updateTopic(Long id, Topic topicDetails) {
 		Optional<Topic> optionalTopic = topicRepository.findById(id);
+		ResponseEntity<String> response;
 		if (optionalTopic.isPresent()) {
 			Topic topic = optionalTopic.get();
 			topic.setName(topicDetails.getName());
 			topic.setSuggestionsIds(topicDetails.getSuggestionsIds());
 			topic.setImages(topicDetails.getImages());
 			Topic updatedTopic = topicRepository.save(topic);
-			return ResponseEntity.ok(updatedTopic);
+			response = ResponseEntity.ok().build();
 		} else {
 			String errorMessage = "Topic with ID " + id + " not found.";
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+			response = ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
 		}
+		return response;
 	}
 
 	public ResponseEntity<Void> deleteById(Long id) {

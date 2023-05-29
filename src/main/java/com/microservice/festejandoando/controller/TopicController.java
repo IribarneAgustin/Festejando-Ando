@@ -41,7 +41,7 @@ public class TopicController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> updateTopic(@PathVariable Long id, @RequestBody Topic topicDetails) {
+	public ResponseEntity<String> updateTopic(@PathVariable Long id, @RequestBody Topic topicDetails) {
 		return topicService.updateTopic(id, topicDetails);
 	}
 
