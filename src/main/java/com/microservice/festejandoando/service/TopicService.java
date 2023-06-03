@@ -40,7 +40,7 @@ public class TopicService {
 			topic.setName(topicDetails.getName());
 			topic.setSuggestionsIds(topicDetails.getSuggestionsIds());
 			topic.setImages(topicDetails.getImages());
-			Topic updatedTopic = topicRepository.save(topic);
+			topicRepository.save(topic);
 			response = ResponseEntity.ok().build();
 		} else {
 			String errorMessage = "Topic with ID " + id + " not found.";

@@ -23,7 +23,13 @@ public class SecurityConfig extends GlobalAuthenticationConfigurerAdapter  {
 
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((requests) -> requests
+        http.csrf(csrf -> csrf.disable())
+            .logout()
+            .logoutUrl("/logout")
+            .logoutSuccessUrl("/")
+            .invalidateHttpSession(true)
+            .deleteCookies("JSESSIONID").and()
+            .authorizeHttpRequests((requests) -> requests
             .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
             .anyRequest().authenticated()).formLogin().defaultSuccessUrl("/home").and()
             .httpBasic();
