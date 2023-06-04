@@ -16,5 +16,10 @@ public class HomeController {
         return "logged succesfully";
         
     }
+
+    @GetMapping("/logout")
+    public String logout(){
+        return "/";
+    }
     
 }
