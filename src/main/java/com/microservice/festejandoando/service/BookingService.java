@@ -9,9 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.microservice.festejandoando.Utils.ExceptionHandler;
 import com.microservice.festejandoando.model.Booking;
 import com.microservice.festejandoando.repository.IBookingRepository;
+import com.microservice.festejandoando.utils.ExceptionHandler;
 
 @Service
 public class BookingService {
@@ -62,29 +62,29 @@ public class BookingService {
             ExceptionHandler.internalServerErrorHandler(response);
         }
 
-        return response;
-    }
+		return response;
+	}
 
-    public ResponseEntity<String> logicalDeletion(Long id, Booking booking) {
+	public ResponseEntity<String> logicalDeletion(Long id, Booking booking) {
 
-        ResponseEntity<String> response = null;
-        try {
-            Optional<Booking> existingBooking = bookingRepository.findById(id);
-            if (existingBooking.isPresent()) {
-                booking.setId(id);
-                booking.setActive(Boolean.FALSE);
-                bookingRepository.save(booking);
-                response = ResponseEntity.ok(messageSource.getMessage("booking.deleted.succesfully", null, null));
-            } else {
-                response = ResponseEntity.status(HttpStatus.BAD_REQUEST).body(messageSource.getMessage("booking.deleted.error", null, null));
-            }
-        } catch (Exception e) {
-            //TO DO logger
-            ExceptionHandler.internalServerErrorHandler(response);
-        }
-    
-        return response;
-    }
-    
+		ResponseEntity<String> response = null;
+		try {
+			Optional<Booking> existingBooking = bookingRepository.findById(id);
+			if (existingBooking.isPresent()) {
+				booking.setId(id);
+				booking.setActive(Boolean.FALSE);
+				bookingRepository.save(booking);
+				response = ResponseEntity.ok(messageSource.getMessage("booking.deleted.succesfully", null, null));
+			} else {
+				response = ResponseEntity.status(HttpStatus.BAD_REQUEST)
+						.body(messageSource.getMessage("booking.deleted.error", null, null));
+			}
+		} catch (Exception e) {
+			// TO DO logger
+			ExceptionHandler.internalServerErrorHandler(response);
+		}
+
+		return response;
+	}
     
 }

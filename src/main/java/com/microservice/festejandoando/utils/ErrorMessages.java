@@ -1,4 +1,4 @@
-package com.microservice.festejandoando.Utils;
+package com.microservice.festejandoando.utils;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;

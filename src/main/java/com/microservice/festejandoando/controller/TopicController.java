@@ -21,11 +21,11 @@ public class TopicController {
 	private TopicService topicService;
 
 	@PostMapping("/save")
-	public Topic createTopic(@RequestBody Topic topic) {
+	public ResponseEntity<String> save(@RequestBody Topic topic) {
 		return topicService.save(topic);
 	}
 
-	@GetMapping
+	@GetMapping("/list")
 	public List<Topic> getAllTopics() {
 		return topicService.findAll();
 	}
@@ -36,7 +36,7 @@ public class TopicController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteTopicById(@PathVariable Long id) {
-		return topicService.deleteById(id);
+	public ResponseEntity<String> logicalDeletion(@PathVariable Long id, @RequestBody Topic topic) {
+		return topicService.logicalDeletion(id, topic);
 	}
 }
