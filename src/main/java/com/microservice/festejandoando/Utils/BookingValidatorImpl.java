@@ -1,6 +1,4 @@
 package com.microservice.festejandoando.utils;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
@@ -10,9 +8,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import com.microservice.festejandoando.model.Booking;
-import com.microservice.festejandoando.model.Client;
 import com.microservice.festejandoando.repository.IBookingRepository;
-import com.microservice.festejandoando.service.ClientService;
+import com.microservice.festejandoando.repository.IClientRepository;
 
 @Component
 public class BookingValidatorImpl implements Validator{
@@ -20,7 +17,7 @@ public class BookingValidatorImpl implements Validator{
     @Autowired
     private MessageSource messageSource;
     @Autowired
-    private ClientService clientService;
+    private IClientRepository clientRepository;
     @Autowired
     private IBookingRepository bookingRepository;
 
@@ -39,9 +36,7 @@ public class BookingValidatorImpl implements Validator{
 
     private void clientValidation(Booking booking, Errors errors) {
         if (booking.getClient() != null) {
-            Long clientId = booking.getClient().getId();
-            Optional<Client> client = clientService.findById(clientId);
-            if (!client.isPresent()) {
+            if (!clientRepository.existsByIdAndActiveTrue(booking.getClient().getId())) {
                 errors.rejectValue("client", messageSource.getMessage("client.notExists.error", new Object[] { "client" }, null));
             }
         }
