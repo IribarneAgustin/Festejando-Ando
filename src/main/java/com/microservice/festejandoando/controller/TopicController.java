@@ -32,7 +32,7 @@ public class TopicController {
 
 	@PutMapping("/{id}")
 	public ResponseEntity<String> updateTopic(@PathVariable Long id, @RequestBody Topic topicDetails) {
-		return topicService.updateTopic(id, topicDetails);
+		return topicService.update(id, topicDetails);
 	}
 
 	@DeleteMapping("/{id}")
