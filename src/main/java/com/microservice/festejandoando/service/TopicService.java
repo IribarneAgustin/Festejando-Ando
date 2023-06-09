@@ -76,18 +76,6 @@ public class TopicService {
 		}
 		return response;
 	}
-	/*
-	 * if (optionalTopic.isPresent()) { Topic topic = optionalTopic.get();
-	 * topic.setName(topicDetails.getName());
-	 * topic.setSuggestionsIds(topicDetails.getSuggestionsIds());
-	 * topic.setImages(topicDetails.getImages()); topicRepository.save(topic);
-	 * response =
-	 * ResponseEntity.ok(messageSource.getMessage("topic.updated.succesfully", null,
-	 * null)); } else { response = ResponseEntity.status(HttpStatus.BAD_REQUEST)
-	 * .body(messageSource.getMessage("topic.updated.error", null, null)); } } catch
-	 * (Exception e) { ExceptionHandler.internalServerErrorHandler(response); }
-	 * return response; }
-	 */
 
 	public ResponseEntity<String> logicalDeletion(Long id, Topic topic) {
 		ResponseEntity<String> response = validator.existsValidation(id);
