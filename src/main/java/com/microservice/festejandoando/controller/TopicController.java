@@ -14,29 +14,29 @@ import com.microservice.festejandoando.model.Topic;
 import com.microservice.festejandoando.service.TopicService;
 
 @RestController
-@RequestMapping("topics")
+@RequestMapping("topic")
 public class TopicController {
 
 	@Autowired
 	private TopicService topicService;
 
 	@PostMapping("/save")
-	public Topic createTopic(@RequestBody Topic topic) {
+	public ResponseEntity<String> save(@RequestBody Topic topic) {
 		return topicService.save(topic);
 	}
 
-	@GetMapping
+	@GetMapping("/list")
 	public List<Topic> getAllTopics() {
 		return topicService.findAll();
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<String> updateTopic(@PathVariable Long id, @RequestBody Topic topicDetails) {
-		return topicService.updateTopic(id, topicDetails);
+		return topicService.update(id, topicDetails);
 	}
 
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteTopicById(@PathVariable Long id) {
-		return topicService.deleteById(id);
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<String> logicalDeletion(@PathVariable Long id, @RequestBody Topic topic) {
+		return topicService.logicalDeletion(id, topic);
 	}
 }

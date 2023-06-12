@@ -77,8 +77,8 @@ public class BookingService {
             ExceptionHandler.internalServerErrorHandler(response);
         }
 
-        return response;
-    }
+		return response;
+	}
 
     public ResponseEntity<String> logicalDeletion(Long id, Booking booking) {
         ResponseEntity<String> response = validator.existsValidation(id);
@@ -102,6 +102,5 @@ public class BookingService {
 
         return response;
     }
-    
     
 }
