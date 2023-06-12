@@ -14,7 +14,7 @@ import com.microservice.festejandoando.model.Topic;
 import com.microservice.festejandoando.service.TopicService;
 
 @RestController
-@RequestMapping("topics")
+@RequestMapping("topic")
 public class TopicController {
 
 	@Autowired
@@ -30,12 +30,12 @@ public class TopicController {
 		return topicService.findAll();
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<String> updateTopic(@PathVariable Long id, @RequestBody Topic topicDetails) {
 		return topicService.update(id, topicDetails);
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> logicalDeletion(@PathVariable Long id, @RequestBody Topic topic) {
 		return topicService.logicalDeletion(id, topic);
 	}

@@ -54,17 +54,16 @@ public class TopicService {
 		return result;
 	}
 
-	public ResponseEntity<String> update(Long id, Topic topicDetails) {
+	public ResponseEntity<String> update(Long id, Topic topic) {
 		ResponseEntity<String> response = validator.existsValidation(id);
 		try {
-			// Optional<Topic> optionalTopic = topicRepository.findById(id);
 			if (!response.getStatusCode().equals(HttpStatus.BAD_REQUEST)) {
-				Errors result = new BeanPropertyBindingResult(topicDetails, "topic");
-				validator.validate(topicDetails, result);
+				Errors result = new BeanPropertyBindingResult(topic, "topic");
+				validator.validate(topic, result);
 				if (!result.hasErrors()) {
-					topicDetails.setId(id);
-					topicDetails.setActive(Boolean.TRUE);
-					topicRepository.save(topicDetails);
+					topic.setId(id);
+					topic.setActive(Boolean.TRUE);
+					topicRepository.save(topic);
 					response = ResponseEntity.ok(messageSource.getMessage("topic.updated.succesfully", null, null));
 				} else {
 					response = ExceptionHandler.handleErrors(result);
