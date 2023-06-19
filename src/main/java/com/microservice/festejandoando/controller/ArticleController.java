@@ -1,6 +1,7 @@
 package com.microservice.festejandoando.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,33 +12,35 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.microservice.festejandoando.model.Topic;
-import com.microservice.festejandoando.service.TopicService;
+
+import com.microservice.festejandoando.model.Article;
+import com.microservice.festejandoando.service.ArticleService;
 
 @RestController
-@RequestMapping("topic")
-public class TopicController {
+@RequestMapping("article")
+public class ArticleController {
 
 	@Autowired
-	private TopicService topicService;
-
-	@PostMapping("/save")
-	public ResponseEntity<String> save(@RequestBody Topic topic) {
-		return topicService.save(topic);
-	}
+	private ArticleService articleService;
 
 	@GetMapping("/list")
-	public List<Topic> getAllTopics() {
-		return topicService.findAll();
+	public List<Article> findAll() {
+		return articleService.findAll();
 	}
-
+	
+	@PostMapping("/save")
+	public ResponseEntity<String> save (@RequestBody Article article){
+		return articleService.save(article);
+	}
+	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<String> updateTopic(@PathVariable Long id, @RequestBody Topic topicDetails) {
-		return topicService.update(id, topicDetails);
+	public ResponseEntity<String> update (@PathVariable Long id, @RequestBody Article article){
+		return articleService.update(id, article);
 	}
-
+	
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<String> logicalDeletion(@PathVariable Long id, @RequestBody Topic topic) {
-		return topicService.logicalDeletion(id, topic);
-	}
+    public ResponseEntity<String> logicalDeletion(@PathVariable Long id, @RequestBody Article article ) {
+        return articleService.logicalDeletion(id, article);
+    }
+
 }
