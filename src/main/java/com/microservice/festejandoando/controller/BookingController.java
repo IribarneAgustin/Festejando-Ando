@@ -41,8 +41,5 @@ public class BookingController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> logicalDeletion(@PathVariable Long id, @RequestBody Booking booking ) {
         return bookingService.logicalDeletion(id, booking);
-    }
-
-
-    
+    }  
 }
