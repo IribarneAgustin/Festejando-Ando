@@ -2,11 +2,11 @@ package com.microservice.festejandoando.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
@@ -18,8 +18,12 @@ public class Booking extends PersistentObject{
 	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private Client client;
-	@OneToMany
-	@JoinColumn(name = "booking_id") 
+	@ManyToMany
+    @JoinTable(
+            name = "booking_topic",
+            joinColumns = @JoinColumn(name = "booking_id"),
+            inverseJoinColumns = @JoinColumn(name = "topic_id")
+    )
 	private List<Topic> topic = new ArrayList<>();
 	private Long deposit;
 	private Boolean isPaid;
@@ -61,7 +65,7 @@ public class Booking extends PersistentObject{
 		return topic;
 	}
 
-	public void setTopic(ArrayList<Topic> topic) {
+	public void setTopic(List<Topic> topic) {
 		this.topic = topic;
 	}
 
