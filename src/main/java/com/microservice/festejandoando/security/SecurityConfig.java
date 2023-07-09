@@ -31,6 +31,7 @@ public class SecurityConfig extends GlobalAuthenticationConfigurerAdapter  {
             .deleteCookies("JSESSIONID").and()
             .authorizeHttpRequests((requests) -> requests
             .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
+            .requestMatchers(new AntPathRequestMatcher("/api")).permitAll()
             .anyRequest().authenticated()).formLogin().defaultSuccessUrl("/home").and()
             .httpBasic();
       return http.build();
