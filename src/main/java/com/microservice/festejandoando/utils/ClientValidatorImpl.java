@@ -29,8 +29,8 @@ public class ClientValidatorImpl implements Validator {
 	public void validate(Object target, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name",
 				messageSource.getMessage("field.required.error", new Object[] { "name" }, null));
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName",
-				messageSource.getMessage("field.required.error", new Object[] { "lastName" }, null));
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email",
+				messageSource.getMessage("field.required.error", new Object[] { "email" }, null));
 	}
 
 	public ResponseEntity<String> existsValidation(Long id) {
