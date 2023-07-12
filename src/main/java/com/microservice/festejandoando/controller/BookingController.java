@@ -14,7 +14,7 @@ import com.microservice.festejandoando.model.Booking;
 import com.microservice.festejandoando.service.BookingService;
 
 @RestController
-@RequestMapping("booking")
+@RequestMapping("api/booking")
 public class BookingController {
 
 

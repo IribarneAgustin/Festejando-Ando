@@ -15,7 +15,7 @@ import com.microservice.festejandoando.model.Topic;
 import com.microservice.festejandoando.service.TopicService;
 
 @RestController
-@RequestMapping("topic")
+@RequestMapping("api/topic")
 public class TopicController {
 
 	@Autowired
