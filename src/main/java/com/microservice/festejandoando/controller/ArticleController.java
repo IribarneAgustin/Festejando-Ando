@@ -18,7 +18,7 @@ import com.microservice.festejandoando.model.Article;
 import com.microservice.festejandoando.service.ArticleService;
 
 @RestController
-@RequestMapping("api/article")
+@RequestMapping("/api/article")
 public class ArticleController {
 
 	@Autowired

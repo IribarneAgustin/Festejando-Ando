@@ -1,6 +1,7 @@
 package com.microservice.festejandoando.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -10,8 +11,8 @@ import jakarta.persistence.Table;
 public class Topic extends PersistentObject {
 
 	private String name;
-	private ArrayList<Long> suggestionsIds = new ArrayList<>();
-	private ArrayList<String> images = new ArrayList<>();
+	private List<Long> suggestionsIds = new ArrayList<>();
+	private List<String> images = new ArrayList<>();
 
 	public Topic() {
 	}
@@ -31,7 +32,7 @@ public class Topic extends PersistentObject {
 		this.name = name;
 	}
 	
-	public ArrayList<Long> getSuggestionsIds() {
+	public List<Long> getSuggestionsIds() {
 		return suggestionsIds;
 	}
 
@@ -39,7 +40,7 @@ public class Topic extends PersistentObject {
 		this.suggestionsIds = suggestionsIds;
 	}
 
-	public ArrayList<String> getImages() {
+	public List<String> getImages() {
 		return images;
 	}
 

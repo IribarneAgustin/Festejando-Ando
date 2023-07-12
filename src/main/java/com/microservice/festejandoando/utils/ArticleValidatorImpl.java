@@ -31,6 +31,8 @@ public class ArticleValidatorImpl implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		Article article = (Article) target;
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "topic",
+				messageSource.getMessage("field.required.error", new Object[] { "topic" }, null));
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name",
 				messageSource.getMessage("field.required.error", new Object[] { "name" }, null));
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "image",
@@ -50,8 +52,9 @@ public class ArticleValidatorImpl implements Validator {
 		ResponseEntity<String> response = ResponseEntity.status(HttpStatus.OK).body(null);
 		if (!articleRepository.existsByIdAndActiveTrue(id)) {
 			response = ResponseEntity.status(HttpStatus.BAD_REQUEST)
-					.body(messageSource.getMessage("article.deleted.error", null, null));
+					.body(messageSource.getMessage("article.not.found.error", null, null));
 		}
+
 		return response;
 	}
 }
