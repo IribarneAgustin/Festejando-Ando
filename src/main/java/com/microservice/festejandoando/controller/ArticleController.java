@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,20 +27,25 @@ public class ArticleController {
 	public List<Article> findAll() {
 		return articleService.findAll();
 	}
-	
+
 	@PostMapping("/save")
-	public ResponseEntity<String> save (@RequestBody Article article){
+	public ResponseEntity<String> save(@RequestBody Article article) {
 		return articleService.save(article);
 	}
-	
+
 	@PutMapping("/update/{id}")
-	public ResponseEntity<String> update (@PathVariable Long id, @RequestBody Article article){
+	public ResponseEntity<String> update(@PathVariable Long id, @RequestBody Article article) {
 		return articleService.update(id, article);
 	}
-	
-	@PutMapping("/delete/{id}")
-    public ResponseEntity<String> logicalDeletion(@PathVariable Long id, @RequestBody Article article ) {
-        return articleService.logicalDeletion(id, article);
-    }
+
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<String> logicalDeletion(@PathVariable Long id, @RequestBody Article article) {
+		return articleService.logicalDeletion(id, article);
+	}
+
+	@GetMapping("/list/suggested")
+	public List<Article> findSuggestedArticles() {
+		return articleService.findSuggestedArticles();
+	}
 
 }

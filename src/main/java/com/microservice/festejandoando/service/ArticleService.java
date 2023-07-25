@@ -67,7 +67,7 @@ public class ArticleService {
 					articleRepository.save(article);
 					response = ResponseEntity.ok(messageSource.getMessage("article.updated.succesfully", null, null));
 				} else {
-			 		response = ExceptionHandler.handleErrors(result);
+					response = ExceptionHandler.handleErrors(result);
 				}
 			}
 		} catch (Exception e) {
@@ -154,5 +154,14 @@ public class ArticleService {
 		return response;
 	}
 
+	public List<Article> findSuggestedArticles() {
+		List<Article> result = new ArrayList<>();
+		try {
+			result = articleRepository.findByActiveAndSuggested(Boolean.TRUE, Boolean.TRUE);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 }
