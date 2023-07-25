@@ -8,9 +8,11 @@ import org.springframework.stereotype.Repository;
 import com.microservice.festejandoando.model.Article;
 
 @Repository
-public interface IArticleRepository extends JpaRepository<Article, Long>{
+public interface IArticleRepository extends JpaRepository<Article, Long> {
 
 	List<Article> findByActiveTrue();
+
 	Boolean existsByIdAndActiveTrue(Long id);
-    List<Article> findByActiveAndSuggested(Boolean active, Boolean suggested);
+
+	List<Article> findByActiveAndSuggested(Boolean active, Boolean suggested);
 }
