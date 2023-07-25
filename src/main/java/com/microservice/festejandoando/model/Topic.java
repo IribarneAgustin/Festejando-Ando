@@ -3,6 +3,7 @@ package com.microservice.festejandoando.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -12,6 +13,7 @@ public class Topic extends PersistentObject {
 
 	private String name;
 	private List<Long> suggestionsIds = new ArrayList<>();
+    @Column(length = 2048)
 	private List<String> images = new ArrayList<>();
 
 	public Topic() {

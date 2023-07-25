@@ -17,7 +17,7 @@ import com.microservice.festejandoando.model.Article;
 import com.microservice.festejandoando.service.ArticleService;
 
 @RestController
-@RequestMapping("article")
+@RequestMapping("/api/article")
 public class ArticleController {
 
 	@Autowired
@@ -27,20 +27,25 @@ public class ArticleController {
 	public List<Article> findAll() {
 		return articleService.findAll();
 	}
-	
+
 	@PostMapping("/save")
-	public ResponseEntity<String> save (@RequestBody Article article){
+	public ResponseEntity<String> save(@RequestBody Article article) {
 		return articleService.save(article);
 	}
-	
+
 	@PutMapping("/update/{id}")
-	public ResponseEntity<String> update (@PathVariable Long id, @RequestBody Article article){
+	public ResponseEntity<String> update(@PathVariable Long id, @RequestBody Article article) {
 		return articleService.update(id, article);
 	}
-	
+
 	@DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> logicalDeletion(@PathVariable Long id, @RequestBody Article article ) {
-        return articleService.logicalDeletion(id, article);
-    }
+	public ResponseEntity<String> logicalDeletion(@PathVariable Long id, @RequestBody Article article) {
+		return articleService.logicalDeletion(id, article);
+	}
+
+	@GetMapping("/list/suggested")
+	public List<Article> findSuggestedArticles() {
+		return articleService.findSuggestedArticles();
+	}
 
 }
