@@ -38,7 +38,7 @@ public class ArticleController {
 		return articleService.update(id, article);
 	}
 
-	@DeleteMapping("/delete/{id}")
+	@PutMapping("/delete/{id}")
 	public ResponseEntity<String> logicalDeletion(@PathVariable Long id, @RequestBody Article article) {
 		return articleService.logicalDeletion(id, article);
 	}
