@@ -35,8 +35,6 @@ public class ArticleValidatorImpl implements Validator {
 				messageSource.getMessage("field.required.error", new Object[] { "topic" }, null));
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name",
 				messageSource.getMessage("field.required.error", new Object[] { "name" }, null));
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "image",
-				messageSource.getMessage("field.required.error", new Object[] { "image" }, null));
 		topicValidation(article, errors);
 	}
 	
