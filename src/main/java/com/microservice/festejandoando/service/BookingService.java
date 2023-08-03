@@ -1,6 +1,9 @@
 package com.microservice.festejandoando.service;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
@@ -24,12 +27,26 @@ public class BookingService {
     @Autowired
     private BookingValidatorImpl validator;
 
-    public List<Booking> findAll(){ 
+    public List<Booking> findActive(){ 
+        List<Booking> result = new ArrayList<>();
+        LocalDate currentDate = LocalDate.now();
+        try{
+            result = bookingRepository.findByActiveTrue();
+            result = result.stream()
+                    .filter(booking -> !booking.getDate().isBefore(currentDate))
+                    .collect(Collectors.toList());
+        }catch(Exception e){
+            //TO DO logger
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
+    public List<Booking> findAllHistory(){ 
         List<Booking> result = new ArrayList<>();
         try{
             result = bookingRepository.findByActiveTrue();
         }catch(Exception e){
-            //TO DO logger
             e.printStackTrace();
         }
         return result;
