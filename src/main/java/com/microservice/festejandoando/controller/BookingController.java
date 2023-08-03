@@ -22,8 +22,13 @@ public class BookingController {
 
 
     @GetMapping("/list")
-    public List<Booking> findAll(){
-        return bookingService.findAll();
+    public List<Booking> findActive(){
+        return bookingService.findActive();
+    }
+    
+    @GetMapping("/listHistory")
+    public List<Booking> findAllHistory(){
+        return bookingService.findAllHistory();
     }
 
     @PostMapping("/save")
