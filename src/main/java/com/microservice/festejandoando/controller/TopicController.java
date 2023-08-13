@@ -39,4 +39,11 @@ public class TopicController {
 	public ResponseEntity<String> logicalDeletion(@PathVariable Long id, @RequestBody Topic topic) {
 		return topicService.logicalDeletion(id, topic);
 	}
+
+	@GetMapping("/find/{id}")
+	public Topic save(@PathVariable Long id) {
+		return topicService.findById(id);
+	}
+
+	
 }

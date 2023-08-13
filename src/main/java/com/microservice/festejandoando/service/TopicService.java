@@ -1,6 +1,7 @@
 package com.microservice.festejandoando.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -95,5 +96,10 @@ public class TopicService {
 			ExceptionHandler.internalServerErrorHandler(response);
 		}
 		return response;
+	}
+
+	public Topic findById(Long id) {
+		Optional<Topic> topic = topicRepository.findById(id);
+		return topic.isPresent() ? topic.get() : null;
 	}
 }
