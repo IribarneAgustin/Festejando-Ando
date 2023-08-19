@@ -45,4 +45,10 @@ public class ArticleController {
 		return articleService.findSuggestedArticles();
 	}
 
+	@GetMapping("/listByTopic/{id}")
+	public List<Article> findByTopicId(@PathVariable Long id) {
+		return articleService.findByTopicId(id);
+	}
+
+
 }

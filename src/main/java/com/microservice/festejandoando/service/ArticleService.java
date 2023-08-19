@@ -164,4 +164,14 @@ public class ArticleService {
 		return result;
 	}
 
+	public List<Article> findByTopicId(Long topicId) {
+		List<Article> result = new ArrayList<>();
+		try {
+			result = articleRepository.findByTopicId(topicId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 }
