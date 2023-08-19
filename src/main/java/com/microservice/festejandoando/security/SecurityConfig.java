@@ -32,7 +32,8 @@ public class SecurityConfig extends GlobalAuthenticationConfigurerAdapter  {
             .authorizeHttpRequests((requests) -> requests
             .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
             .requestMatchers(new AntPathRequestMatcher("/api/topic/list")).permitAll()
-            .requestMatchers(new AntPathRequestMatcher("/api/topic/find")).permitAll()
+            .requestMatchers(new AntPathRequestMatcher("/api/topic/find/{id}")).permitAll()
+            .requestMatchers(new AntPathRequestMatcher("/api/article/listByTopic/{id}")).permitAll()
             .anyRequest().authenticated()).formLogin().defaultSuccessUrl("/home").and()
             //.loginPage("/api/login").and()
             .httpBasic();

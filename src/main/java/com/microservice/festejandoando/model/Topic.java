@@ -15,15 +15,11 @@ public class Topic extends PersistentObject {
 	private List<Long> suggestionsIds = new ArrayList<>();
     @Column(length = 2048)
 	private List<String> images = new ArrayList<>();
+	private Integer suggestedQuantity;
+	@Column(length = 2048)
+	private String description;
 
 	public Topic() {
-	}
-
-	public Topic(Long id, Boolean active, String name, ArrayList<Long> suggestionsIds, ArrayList<String> images) {
-		super(id, active);
-		this.name = name;
-		this.suggestionsIds = suggestionsIds;
-		this.images = images;
 	}
 
 	public String getName() {
@@ -33,12 +29,12 @@ public class Topic extends PersistentObject {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public List<Long> getSuggestionsIds() {
 		return suggestionsIds;
 	}
 
-	public void setSuggestionsIds(ArrayList<Long> suggestionsIds) {
+	public void setSuggestionsIds(List<Long> suggestionsIds) {
 		this.suggestionsIds = suggestionsIds;
 	}
 
@@ -46,13 +42,27 @@ public class Topic extends PersistentObject {
 		return images;
 	}
 
-	public void setImages(ArrayList<String> images) {
+	public void setImages(List<String> images) {
 		this.images = images;
 	}
 
-	@Override
-	public String toString() {
-		return "Topic [name=" + name + ", suggestions=" + suggestionsIds +", images=" + images + "]";
+	public Integer getSuggestedQuantity() {
+		return suggestedQuantity;
 	}
+
+	public void setSuggestedQuantity(Integer suggestedQuantity) {
+		this.suggestedQuantity = suggestedQuantity;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+
 	
 }
