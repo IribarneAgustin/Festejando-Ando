@@ -8,6 +8,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import com.microservice.festejandoando.model.Booking;
+import com.microservice.festejandoando.model.Client;
 import com.microservice.festejandoando.repository.IBookingRepository;
 import com.microservice.festejandoando.repository.IClientRepository;
 
@@ -36,9 +37,19 @@ public class BookingValidatorImpl implements Validator{
 
     private void clientValidation(Booking booking, Errors errors) {
         if (booking.getClient() != null) {
-            if (!clientRepository.existsByIdAndActiveTrue(booking.getClient().getId())) {
-                errors.rejectValue("client", messageSource.getMessage("client.notExists.error", new Object[] { "client" }, null));
+
+            if (booking.getClient().getEmail() == null) {
+                errors.rejectValue("client", messageSource.getMessage("field.required.error", new Object[] { "email" }, null));
+
+            } else {
+
+                Client client = clientRepository.findByEmail(booking.getClient().getEmail());
+                if (booking.getClient().getEmail() != null && client != null) {
+                    booking.setClient(client);
+                }
+                // if not exists, there is an annotation on Booking entity with the aim of save it
             }
+
         }
     }
 

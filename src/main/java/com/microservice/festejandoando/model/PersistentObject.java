@@ -14,6 +14,7 @@ public abstract class PersistentObject {
 	private Boolean active;
 	
 	public PersistentObject() {
+		setActive(Boolean.TRUE);
 	}
 
 	public PersistentObject(Long id, Boolean active) {
