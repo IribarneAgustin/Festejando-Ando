@@ -42,4 +42,9 @@ public class ClientController {
 		return clientService.logicalDeletion(id, client);
 	}
 
+	@GetMapping("/findByEmail/{email}")
+	public ResponseEntity<?> findByEmail(@PathVariable String email) {
+		return clientService.findByEmail(email);
+	}
+
 }

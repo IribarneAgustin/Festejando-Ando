@@ -2,6 +2,8 @@ package com.microservice.festejandoando.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -15,7 +17,7 @@ import jakarta.persistence.Table;
 public class Booking extends PersistentObject{
 
 	private LocalDate date;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "client_id")
 	private Client client;
 	@ManyToMany
@@ -29,20 +31,11 @@ public class Booking extends PersistentObject{
 	private Boolean isPaid;
 	private Boolean confirm;
 	private Double cost;
+	private Integer quantity;
+	private String address;
+	private String description;
 	
 	public Booking() {	
-	}
-	
-	public Booking(Long id, Boolean active, LocalDate date, Client client, ArrayList<Topic> topic, Long deposit, Boolean isPaid, Boolean confirm,
-			Double cost) {
-		super(id, active);
-		this.date = date;
-		this.client = client;
-		this.topic = topic;
-		this.deposit = deposit;
-		this.isPaid = isPaid;
-		this.confirm = confirm;
-		this.cost = cost;
 	}
 
 	public LocalDate getDate() {
@@ -101,10 +94,31 @@ public class Booking extends PersistentObject{
 		this.cost = cost;
 	}
 
-	@Override
-	public String toString() {
-		return "Booking [date=" + date + ", client=" + client + ", topic=" + topic + ", deposit=" + deposit
-				+ ", isPaid=" + isPaid + ", confirm=" + confirm + ", cost=" + cost + "]";
+	public Integer getQuantity() {
+		return quantity;
 	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	
+	
 	
 }

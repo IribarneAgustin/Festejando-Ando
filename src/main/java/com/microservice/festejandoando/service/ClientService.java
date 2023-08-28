@@ -43,8 +43,8 @@ public class ClientService {
 			validator.validate(client, result);
 			if (!result.hasErrors()) {
 				client.setActive(Boolean.TRUE);
-				clientRepository.save(client);
-				response = ResponseEntity.ok(messageSource.getMessage("client.saved.succesfully", null, null));
+				Client newCLient = clientRepository.save(client);
+				response = ResponseEntity.ok(messageSource.getMessage("client.saved.succesfully", null, null) + " ID: " + newCLient.getId());
 			} else {
 				response = ExceptionHandler.handleErrors(result);
 			}
@@ -100,6 +100,19 @@ public class ClientService {
 			e.printStackTrace();
 			ExceptionHandler.internalServerErrorHandler(response);
 		}
+
+		return response;
+	}
+
+	public ResponseEntity<?> findByEmail(String email){
+		Client client = clientRepository.findByEmail(email);
+		ResponseEntity<?> response;
+
+        if (client != null) {
+            response = ResponseEntity.ok(client); // Return 200 OK with client data
+        } else {
+            response = ResponseEntity.notFound().build(); // Return 404 Not Found
+        }
 
 		return response;
 	}

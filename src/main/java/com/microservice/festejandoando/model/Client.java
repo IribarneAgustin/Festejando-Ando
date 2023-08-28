@@ -1,4 +1,5 @@
 package com.microservice.festejandoando.model;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -8,16 +9,11 @@ public class Client extends PersistentObject {
 
 	private String name;
 	private String lastName;
+	@Column(unique = true, nullable = false)
 	private String email;
+	private String phoneNumber;
 
 	public Client() {
-	}
-
-	public Client(Long id, Boolean active, String name, String lastName, String email) {
-		super(id, active);
-		this.name = name;
-		this.lastName = lastName;
-		this.email = email;
 	}
 
 	public String getName() {
@@ -44,9 +40,13 @@ public class Client extends PersistentObject {
 		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "Client [name=" + name + ", lastName=" + lastName + ", email=" + email + "]";
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
 	
 }
