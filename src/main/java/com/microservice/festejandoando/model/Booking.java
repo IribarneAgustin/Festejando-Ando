@@ -1,6 +1,6 @@
 package com.microservice.festejandoando.model;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 @Table (name = "Booking")
 public class Booking extends PersistentObject{
 
-	private LocalDate date;
+	private Date date;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "client_id")
 	private Client client;
@@ -38,11 +38,11 @@ public class Booking extends PersistentObject{
 	public Booking() {	
 	}
 
-	public LocalDate getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDate date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
