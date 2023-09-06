@@ -78,60 +78,106 @@ public class BookingService {
                 response = ExceptionHandler.handleErrors(result);
             }
         } catch (Exception e) {
-            // TO DO logger
-            e.printStackTrace();
-            ExceptionHandler.internalServerErrorHandler(response);
-        }
+			// TO DO logger
+			e.printStackTrace();
+			ExceptionHandler.internalServerErrorHandler(response);
+		}
 
-        return response;
-    }
+		return response;
+	}
 
-    public ResponseEntity<String> update(Long id, Booking booking) {
-        ResponseEntity<String> response = validator.existsValidation(id);
-        try {
-            if (!response.getStatusCode().equals(HttpStatus.BAD_REQUEST)) {
-                Errors result = new BeanPropertyBindingResult(booking, "booking");
-                validator.validate(booking, result);
-                if (!result.hasErrors()) {
-                    booking.setId(id);
-                    booking.setActive(Boolean.TRUE);
-                    bookingRepository.save(booking);
-                    response = ResponseEntity.ok(messageSource.getMessage("booking.updated.succesfully", null, null));
-                } else {
-                    response = ExceptionHandler.handleErrors(result);
-                }
-            }
-        } catch (Exception e) {
-            // TO DO logger
-            e.printStackTrace();
-            ExceptionHandler.internalServerErrorHandler(response);
-        }
+	public ResponseEntity<String> update(Long id, Booking booking) {
+		ResponseEntity<String> response = validator.existsValidation(id);
+		try {
+			if (!response.getStatusCode().equals(HttpStatus.BAD_REQUEST)) {
+				Errors result = new BeanPropertyBindingResult(booking, "booking");
+				validator.validate(booking, result);
+				if (!result.hasErrors()) {
+					booking.setId(id);
+					booking.setActive(Boolean.TRUE);
+					bookingRepository.save(booking);
+					response = ResponseEntity.ok(messageSource.getMessage("booking.updated.succesfully", null, null));
+				} else {
+					response = ExceptionHandler.handleErrors(result);
+				}
+			}
+		} catch (Exception e) {
+			// TO DO logger
+			e.printStackTrace();
+			ExceptionHandler.internalServerErrorHandler(response);
+		}
 
-        return response;
-    }
+		return response;
+	}
 
-    public ResponseEntity<String> logicalDeletion(Long id, Booking booking) {
-        ResponseEntity<String> response = validator.existsValidation(id);
-        try {
-            if (!response.getStatusCode().equals(HttpStatus.BAD_REQUEST)) {
-                Errors result = new BeanPropertyBindingResult(booking, "booking");
-                if (!result.hasErrors()) {
-                    booking.setId(id);
-                    booking.setActive(Boolean.FALSE);
-                    bookingRepository.save(booking);
-                    response = ResponseEntity.ok(messageSource.getMessage("booking.deleted.succesfully", null, null));
+	public ResponseEntity<String> updateConfirm(Long id, Boolean confirm) {
+		ResponseEntity<String> response = validator.existsValidation(id);
+		try {
+			if (!response.getStatusCode().equals(HttpStatus.BAD_REQUEST)) {
+				Booking booking = bookingRepository.findById(id).orElse(null);
+				if (booking != null) {
+					booking.setConfirm(confirm);
+					bookingRepository.save(booking);
+					response = ResponseEntity
+							.ok(messageSource.getMessage("booking.confirm.updated.successfully", null, null));
+				} else {
+					response = ResponseEntity.notFound().build();
+				}
+			}
+		} catch (Exception e) {
+			// TO DO logger
+			e.printStackTrace();
+			ExceptionHandler.internalServerErrorHandler(response);
+		}
 
-                } else {
-                    response = ExceptionHandler.handleErrors(result);
-                }
-            }
-        } catch (Exception e) {
-            // TO DO logger
-            e.printStackTrace();
-            ExceptionHandler.internalServerErrorHandler(response);
-        }
+		return response;
+	}
+	
+	public ResponseEntity<String> updateToCancel(Long id, Boolean confirm) {
+		ResponseEntity<String> response = validator.existsValidation(id);
+		try {
+			if (!response.getStatusCode().equals(HttpStatus.BAD_REQUEST)) {
+				Booking booking = bookingRepository.findById(id).orElse(null);
+				if (booking != null) {
+					booking.setConfirm(confirm);
+					bookingRepository.save(booking);
+					response = ResponseEntity
+							.ok(messageSource.getMessage("booking.confirm.updated.successfully", null, null));
+				} else {
+					response = ResponseEntity.notFound().build();
+				}
+			}
+		} catch (Exception e) {
+			// TO DO logger
+			e.printStackTrace();
+			ExceptionHandler.internalServerErrorHandler(response);
+		}
 
-        return response;
-    }
+		return response;
+	}
+
+	public ResponseEntity<String> logicalDeletion(Long id, Booking booking) {
+		ResponseEntity<String> response = validator.existsValidation(id);
+		try {
+			if (!response.getStatusCode().equals(HttpStatus.BAD_REQUEST)) {
+				Errors result = new BeanPropertyBindingResult(booking, "booking");
+				if (!result.hasErrors()) {
+					booking.setId(id);
+					booking.setActive(Boolean.FALSE);
+					bookingRepository.save(booking);
+					response = ResponseEntity.ok(messageSource.getMessage("booking.deleted.succesfully", null, null));
+
+				} else {
+					response = ExceptionHandler.handleErrors(result);
+				}
+			}
+		} catch (Exception e) {
+			// TO DO logger
+			e.printStackTrace();
+			ExceptionHandler.internalServerErrorHandler(response);
+		}
+
+		return response;
+	}
 
 }
