@@ -44,9 +44,9 @@ public class EmailService {
     private void prepareClientMessage(SimpleMailMessage message, String clientEmail, String name) {
         String emailToClient = "Gracias por comunicarte con FestejandoAndo {recipient}!, en las próximas horas te estaremos enviando un presupuesto adaptado para vos en base a lo que nos pediste.\n"
                 +
-                "Saludos,\nAgustina";
+                "\nSaludos,\nAgustina";
         emailToClient = emailToClient.replace("{recipient}", name != null ? name : "");
-        message.setFrom("agusiri96@gmail.com"); // festejandoando
+        message.setFrom("agusiri96@gmail.com"); // festejandoAndo
         message.setTo(clientEmail);
         message.setText(emailToClient);
         message.setSubject("Solicitud de reserva recibida");
@@ -65,8 +65,8 @@ public class EmailService {
                 "Email: " + booking.getClient().getEmail() + "\n" +
                 "Teléfono: " + booking.getClient().getPhoneNumber();
 
-        message.setFrom("agusiri96@gmail.com"); // festejandoando web site
-        message.setTo("agusiri96@gmail.com"); // festejando
+        message.setFrom("agusiri96@gmail.com"); // festejandoAndo web site
+        message.setTo("agusiri96@gmail.com"); // festejandoAndo
         message.setText(emailToAdmin);
         message.setSubject("Solicitud de reserva recibida");
     }

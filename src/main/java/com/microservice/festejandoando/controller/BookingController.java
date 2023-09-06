@@ -3,6 +3,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -34,7 +35,6 @@ public class BookingController {
     @PostMapping("/save")
     public ResponseEntity<String> save(@RequestBody Booking booking){
         return bookingService.save(booking);
-        
     }
 
     @PutMapping("/update/{id}")
@@ -42,6 +42,16 @@ public class BookingController {
         return bookingService.update(id, booking);
     }
 
+    @PatchMapping("/confirm/{id}")
+    public ResponseEntity<String> confirm(@PathVariable Long id, @RequestBody Boolean confirm) {
+        return bookingService.updateConfirm(id, confirm);
+    }
+    
+    @PatchMapping("/cancel/{id}")
+    public ResponseEntity<String> cancel(@PathVariable Long id, @RequestBody Boolean confirm) {
+        return bookingService.updateToCancel(id, confirm);
+    }
+    
     @PutMapping("/delete/{id}")
     public ResponseEntity<String> logicalDeletion(@PathVariable Long id, @RequestBody Booking booking ) {
         return bookingService.logicalDeletion(id, booking);
