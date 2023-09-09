@@ -2,6 +2,7 @@ package com.microservice.festejandoando.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.GlobalAuthenticationConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -23,22 +24,24 @@ public class SecurityConfig extends GlobalAuthenticationConfigurerAdapter  {
 
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
-            .logout()
-            .logoutUrl("/logout")
-            .logoutSuccessUrl("/")
-            .invalidateHttpSession(true)
-            .deleteCookies("JSESSIONID").and()
-            .authorizeHttpRequests((requests) -> requests
-            .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
-            .requestMatchers(new AntPathRequestMatcher("/api/topic/list")).permitAll()
-            .requestMatchers(new AntPathRequestMatcher("/api/topic/find/{id}")).permitAll()
-            .requestMatchers(new AntPathRequestMatcher("/api/article/listByTopic/{id}")).permitAll()
-            .requestMatchers(new AntPathRequestMatcher("/api/booking/save")).permitAll()
-            .requestMatchers(new AntPathRequestMatcher("/api/client/save")).permitAll()
-            .anyRequest().authenticated()).formLogin().defaultSuccessUrl("/home").and()
-            //.loginPage("/api/login").and()
-            .httpBasic();
+        http
+            .csrf(csrf -> csrf.disable())
+            .logout(logout -> logout
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID"))
+            .authorizeHttpRequests(authorize -> authorize
+                .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/api/topic/list")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/api/topic/find/{id}")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/api/article/listByTopic/{id}")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/api/booking/save")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/api/client/save")).permitAll()
+                .anyRequest().authenticated())
+                .httpBasic(Customizer.withDefaults())
+            .formLogin(formLogin -> formLogin
+                .defaultSuccessUrl("/home"));
       return http.build();
     }
   
