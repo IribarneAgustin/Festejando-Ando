@@ -36,6 +36,7 @@ public class SecurityConfig extends GlobalAuthenticationConfigurerAdapter  {
                 .requestMatchers(new AntPathRequestMatcher("/api/topic/list")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/api/topic/find/{id}")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/api/article/listByTopic/{id}")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/api/article//listSuggestedArticlesByTopic/{id}")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/api/booking/save")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/api/client/save")).permitAll()
                 .anyRequest().authenticated())
