@@ -63,7 +63,9 @@ public class EmailService {
                 "Datos del solicitante:\n" +
                 "Nombre: " + (booking.getClient().getName() != null ? booking.getClient().getName() : "") + "\n" +
                 "Email: " + booking.getClient().getEmail() + "\n" +
-                "Teléfono: " + booking.getClient().getPhoneNumber();
+                "Teléfono: " + booking.getClient().getPhoneNumber() + "\n" +
+                "Comentarios: " + (booking.getDescription() != null ? booking.getDescription() : "") + "\n" +
+                "Artículos sugeridos agregados: " + (booking.getSuggestionNames() != null ? booking.getSuggestionNames() : "Ninguno");
 
         message.setFrom("agusiri96@gmail.com"); // festejandoAndo web site
         message.setTo("agusiri96@gmail.com"); // festejandoAndo

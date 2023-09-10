@@ -1,4 +1,5 @@
 package com.microservice.festejandoando.model;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,21 +12,16 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-
 @Entity
-@Table (name = "Booking")
-public class Booking extends PersistentObject{
+@Table(name = "Booking")
+public class Booking extends PersistentObject {
 
 	private Date date;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "client_id")
 	private Client client;
 	@ManyToMany
-    @JoinTable(
-            name = "booking_topic",
-            joinColumns = @JoinColumn(name = "booking_id"),
-            inverseJoinColumns = @JoinColumn(name = "topic_id")
-    )
+	@JoinTable(name = "booking_topic", joinColumns = @JoinColumn(name = "booking_id"), inverseJoinColumns = @JoinColumn(name = "topic_id"))
 	private List<Topic> topic = new ArrayList<>();
 	private Long deposit;
 	private Boolean isPaid;
@@ -34,8 +30,9 @@ public class Booking extends PersistentObject{
 	private Integer quantity;
 	private String address;
 	private String description;
-	
-	public Booking() {	
+	private String suggestionNames;
+
+	public Booking() {
 	}
 
 	public Date getDate() {
@@ -118,7 +115,12 @@ public class Booking extends PersistentObject{
 		this.description = description;
 	}
 
-	
-	
-	
+	public String getSuggestionNames() {
+		return suggestionNames;
+	}
+
+	public void setSuggestionNames(String suggestionNames) {
+		this.suggestionNames = suggestionNames;
+	}
+
 }

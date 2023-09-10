@@ -124,7 +124,7 @@ public class ArticleService {
 	public List<Article> findAllSuggestions() {
 		List<Article> result = new ArrayList<>();
 		try {
-			result = articleRepository.findByActiveAndSuggested(Boolean.TRUE,Boolean.TRUE);
+			result = articleRepository.findByActiveAndSuggested(Boolean.TRUE, Boolean.TRUE);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -168,6 +168,16 @@ public class ArticleService {
 		List<Article> result = new ArrayList<>();
 		try {
 			result = articleRepository.findByTopicId(topicId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public List<Article> findSuggestedArticlesByTopic(Long topicId) {
+		List<Article> result = new ArrayList<>();
+		try {
+			result = articleRepository.findArticlesByTopicIdAndSuggestedTrueAndActiveTrue(topicId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
