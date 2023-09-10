@@ -17,4 +17,6 @@ public interface IArticleRepository extends JpaRepository<Article, Long> {
 	List<Article> findByActiveAndSuggested(Boolean active, Boolean suggested);
 
 	List<Article> findByTopicId(Long topicId);
+
+	List<Article> findArticlesByTopicIdAndSuggestedTrueAndActiveTrue(Long topicId);
 }
