@@ -1,5 +1,6 @@
 package com.microservice.festejandoando.security;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -20,6 +21,10 @@ public class SecurityConfig extends GlobalAuthenticationConfigurerAdapter  {
 
     @Autowired
     private AdminUserDetailsServiceImpl adminUserDetailsServiceImpl;
+    @Value("${APP_ADMIN_NAME}")
+    private String administratorName;
+    @Value("${APP_ADMIN_PASSWORD}")
+    private String administratorPassword;
     
 
     @Bean
@@ -58,10 +63,9 @@ public class SecurityConfig extends GlobalAuthenticationConfigurerAdapter  {
         initAdmin();
     }
 
-    //We save an admin for default
     public void initAdmin() {
-        String encodedPassword = passwordEncoder().encode("123");
-        String username = "admin";
+        String encodedPassword = passwordEncoder().encode(administratorPassword);
+        String username = administratorName;
         Administrator admin = new Administrator();
         admin.setActive(true);
         admin.setPassword(encodedPassword);
