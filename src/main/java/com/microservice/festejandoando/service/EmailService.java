@@ -41,9 +41,12 @@ public class EmailService {
     private void prepareClientMessage(MimeMessage mimeMessage, String clientEmail, String name) {
         try {
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
-        String emailToClient ="<div style='text-align: center;'><img src='https://www.lesoir.be/sites/default/files/dpistyles_v2/ena_16_9_in_line/2020/11/25/node_340041/27816693/public/2020/11/25/B9725352369Z.1_20201125203641_000+G86H4FQ08.3-0.jpg?itok=7U7T6-xP1606333017' alt='Icon' width='100' height='100'></div>"
-                + "<br/><br/><div style='text-align: center;'>Gracias por comunicarte con FestejandoAndo {recipient}!, en las pr\u00F3ximas horas te estaremos enviando un presupuesto adaptado para vos en base a lo que nos pediste.<br/><br/>"
-                 + "Saludos, Agustina</div>";
+        String imageDirectLink = "https://drive.google.com/uc?id=1_Y3aiFoizYB94c2M3IQsbGHL8-YYmVj1";
+
+        String emailToClient = "<div style='text-align: center;'><img src='" + imageDirectLink + "'></div>"
+                + "<br/><br/><div style='text-align: center;'>Gracias por comunicarte con FestejandoAndo {recipient}!, en las próximas horas te estaremos enviando un presupuesto adaptado para vos en base a lo que nos pediste.<br/><br/>"
+                + "Saludos, Agustina</div>";
+        
         
         helper.setText(emailToClient, true);
         
@@ -75,8 +78,8 @@ public class EmailService {
                 "Artículos sugeridos agregados: "
                 + (booking.getSuggestionNames() != null ? booking.getSuggestionNames() : "Ninguno");
 
-        message.setFrom("agusiri96@gmail.com"); // festejandoAndo web site 
-        message.setTo(appEmail); // festejandoAndo
+        message.setFrom(appEmail); // festejandoAndo web site 
+        message.setTo(appEmail);
         message.setText(emailToAdmin);
         message.setSubject("Solicitud de reserva recibida");
     }
