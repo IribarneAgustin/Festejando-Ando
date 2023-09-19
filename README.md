@@ -1,6 +1,6 @@
 # FESTEJANDO ANDO - Sistema de Alquiler de Mobiliario Infantil
 
-FESTEJANDO ANDO es un proyecto de sistema para alquilar mobiliario infantil que permite a los usuarios explorar y solicitar reservas de una amplia variedad de artículos organizados por temáticas. Este sistema también incluye características como sugerencias de artículos para alquilar según las temáticas configuradas por el administrador y un carrito de compras para facilitar la gestión de las reservas. Además, el sistema envía notificaciones por correo electrónico tanto al cliente como al administrador cuando se realiza una reserva.
+**FESTEJANDO ANDO** es un proyecto de sistema para alquilar mobiliario infantil que permite a los usuarios explorar y solicitar reservas de una amplia variedad de artículos organizados por temáticas. Este sistema también incluye características como sugerencias de artículos para alquilar según las temáticas configuradas por el administrador y un carrito de compras para facilitar la gestión de las reservas. Además, el sistema envía notificaciones por correo electrónico tanto al cliente como al administrador cuando se realiza una reserva.
 
 ## Características Funcionales
 
@@ -38,54 +38,47 @@ FESTEJANDO ANDO es un proyecto de sistema para alquilar mobiliario infantil que 
 
 ## Cómo Ejecutar el Proyecto
 
-Para ejecutar el proyecto FESTEJANDO ANDO en su entorno local, siga estos pasos:
+Para ejecutar el proyecto **FESTEJANDO ANDO** en su entorno local, siga estos pasos:
 
-1. Clonar el repositorio desde GitHub.
+1. Clone ambos repositorios, tanto del frontend como del backend desde GitHub.
 
-   ```bash
-   git clone https://github.com/tu_usuario/festejando-ando.git
-Configurar la base de datos MySQL con la configuración adecuada y asegurarse de que esté en funcionamiento.
+   ```shell
+   git clone https://github.com/tu_usuario/festejando-ando-frontend.git
+   
+2. Configure la base de datos MySQL con la configuración adecuada y asegúrese de que esté en funcionamiento.
+3. Configure las propiedades de la aplicación, como la URL de la base de datos y las credenciales, en el archivo de configuración.
+4. Instale las dependencias del proyecto tanto para el backend como para el frontend.
 
-Configure las propiedades de la aplicación, como la URL de la base de datos y las credenciales, en el archivo de configuración.
-
-Instale las dependencias del proyecto tanto para el backend como para el frontend.
-
-bash
-Copy code
-cd festejando-ando/backend
+5. # En el directorio del backend
+cd festejando-ando-backend
 npm install
 
-cd ../frontend
+# En el directorio del frontend
+cd ../festejando-ando-frontend
 npm install
-Inicie el servidor backend y el cliente frontend en dos terminales separadas.
 
-bash
-Copy code
-# En la terminal 1 (backend)
-cd festejando-ando/backend
-npm start
-
-# En la terminal 2 (frontend)
-cd festejando-ando/frontend
-npm start
-Abra su navegador web y vaya a http://localhost:3000 para acceder a la aplicación.
+6. Abra su navegador web y vaya a http://localhost:3000 para acceder a la aplicación.
 
 ¡Disfrute explorando y utilizando FESTEJANDO ANDO!
 
-Contribuciones
-Las contribuciones son bienvenidas. Si desea contribuir al proyecto, siga estos pasos:
+## Contribuciones
 
-Fork el repositorio en GitHub.
+Contribuciones son bienvenidas. Si deseas contribuir al proyecto, sigue estos pasos:
 
-Cree una nueva rama para su función o corrección de errores.
+1. Haz un fork del repositorio en GitHub.
 
-Realice los cambios necesarios y asegúrese de seguir las mejores prácticas de codificación.
+2. Crea una nueva rama para tu función o corrección de errores.
 
-Envíe una solicitud de extracción (pull request) con una descripción detallada de los cambios que ha realizado.
+3. Realiza los cambios necesarios y asegúrate de seguir las mejores prácticas de codificación.
 
-Los colaboradores revisarán su solicitud y la fusionarán en el proyecto principal si es apropiado.
+4. Envía una solicitud de extracción (pull request) con una descripción detallada de los cambios que has realizado.
 
-Problemas y Soporte
-Si encuentra problemas o tiene preguntas sobre el proyecto, no dude en abrir un problema en GitHub o ponerse en contacto con el equipo de desarrollo.
+5. Los colaboradores revisarán tu solicitud y la fusionarán en el proyecto principal si es apropiado.
 
-¡Gracias por usar FESTEJANDO ANDO! Esperamos que este sistema de alquiler de mobiliario infantil sea útil para usted y su comunidad.
+## Problemas y Soporte
+
+Si encuentras problemas o tienes preguntas sobre el proyecto, no dudes en abrir un issue en GitHub o ponerte en contacto con el equipo de desarrollo.
+
+¡Gracias por usar **FESTEJANDO ANDO**! Esperamos que este sistema de alquiler de mobiliario infantil sea útil para ti y tu comunidad.
+
+
