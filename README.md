@@ -1,7 +1,7 @@
-FESTEJANDO ANDO - Sistema de Alquiler de Mobiliario Infantil
-FESTEJANDO ANDO es un proyecto de sistema para alquilar mobiliario infantil que permite a los usuarios explorar y solicitar reservas de una amplia variedad de artículos organizados por temáticas. Este sistema también incluye características como sugerencias de artículos para alquilar según las temáticas configuradas por el administrador y un carrito de compras para facilitar la gestión de las reservas. Además, el sistema envía notificaciones por correo electrónico tanto al cliente como al administrador cuando se realiza una reserva.
+#FESTEJANDO ANDO - Sistema de Alquiler de Mobiliario Infantil
+#FESTEJANDO ANDO es un proyecto de sistema para alquilar mobiliario infantil que permite a los usuarios explorar y solicitar reservas de una amplia variedad de artículos organizados por temáticas. Este sistema también incluye características como sugerencias de artículos para alquilar según las temáticas configuradas por el administrador y un carrito de compras para facilitar la gestión de las reservas. Además, el sistema envía notificaciones por correo electrónico tanto al cliente como al administrador cuando se realiza una reserva.
 
-Características Funcionales
+#Características Funcionales
 Inicio de Sesión/Cierre de Sesión como Administrador: Los administradores pueden iniciar sesión en el sistema y cerrar sesión cuando lo deseen.
 
 Panel de Administración: El sistema incluye un panel de administración que permite a los administradores gestionar clientes, temáticas, artículos y reservas de manera eficiente.
@@ -26,14 +26,14 @@ Captcha (Prevención de Spam): El sistema utiliza Captcha para evitar el envío 
 
 Notificaciones por Correo Electrónico: Se envían notificaciones por correo electrónico tanto al cliente como al administrador cuando se realiza una reserva, solicitando confirmación.
 
-Recursos No Funcionales
+#Recursos No Funcionales
 Backend API Rest Java Spring Boot: El sistema utiliza una API REST implementada en Java con Spring Boot para manejar las operaciones del servidor.
 
 Frontend React JS: La interfaz de usuario se desarrolla utilizando React JS para proporcionar una experiencia de usuario fluida y receptiva.
 
 Base de Datos MySQL: Se utiliza MySQL como sistema de gestión de bases de datos para almacenar y gestionar datos relacionados con clientes, temáticas, artículos y reservas.
 
-Cómo Ejecutar el Proyecto
+#Cómo Ejecutar el Proyecto
 Para ejecutar el proyecto FESTEJANDO ANDO en su entorno local, siga estos pasos:
 
 Clonar ambos repositorios desde GitHub, tanto el correspondiente al backend como al frontend
@@ -62,18 +62,18 @@ Inicie el servidor backend y el cliente frontend en dos terminales separadas.
 
 bash
 Copy code
-# En la terminal 1 (backend)
+En la terminal 1 (backend)
 cd festejando-ando/backend
 Run Spring boot Application
 
-# En la terminal 2 (frontend)
+En la terminal 2 (frontend)
 cd festejando-ando/frontend
 npm start
 Abra su navegador web y vaya a http://localhost:3000 para acceder a la aplicación.
 
 ¡Disfrute explorando y utilizando FESTEJANDO ANDO!
 
-Contribuciones
+#Contribuciones
 Las contribuciones son bienvenidas. Si desea contribuir al proyecto, siga estos pasos:
 
 Fork el repositorio en GitHub.
@@ -86,7 +86,7 @@ Envíe una solicitud de extracción (pull request) con una descripción detallad
 
 Los colaboradores revisarán su solicitud y la fusionarán en el proyecto principal si es apropiado.
 
-Problemas y Soporte
+#Problemas y Soporte
 Si encuentra problemas o tiene preguntas sobre el proyecto, no dude en abrir un problema en GitHub o ponerse en contacto con el equipo de desarrollo.
 
 ¡Gracias por usar FESTEJANDO ANDO! Esperamos que este sistema de alquiler de mobiliario infantil sea útil para usted y su comunidad.
