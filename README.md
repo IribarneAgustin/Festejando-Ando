@@ -49,15 +49,17 @@ Para ejecutar el proyecto **FESTEJANDO ANDO** en su entorno local, siga estos pa
 3. Configure las propiedades de la aplicación, como la URL de la base de datos y las credenciales, en el archivo de configuración.
 4. Instale las dependencias del proyecto tanto para el backend como para el frontend.
 
-5. # En el directorio del backend
+# En el directorio del backend
 cd festejando-ando-backend
-npm install
+
+Run as Spring boot Application 
 
 # En el directorio del frontend
 cd ../festejando-ando-frontend
 npm install
+npm start
 
-6. Abra su navegador web y vaya a http://localhost:3000 para acceder a la aplicación.
+Abra su navegador web y vaya a http://localhost:3000 para acceder a la aplicación.
 
 ¡Disfrute explorando y utilizando FESTEJANDO ANDO!
 
