@@ -41,23 +41,29 @@
 Para ejecutar el proyecto **FESTEJANDO ANDO** en su entorno local, siga estos pasos:
 
 1. Clone ambos repositorios, tanto del frontend como del backend desde GitHub.
-
-   ```shell
+```shell
    git clone https://github.com/tu_usuario/festejando-ando-frontend.git
+```
+Backend URL: https://github.com/IribarneAgustin/Festejando-Ando
+
+Frontend URL: https://github.com/IribarneAgustin?tab=repositories
    
-2. Configure la base de datos MySQL con la configuración adecuada y asegúrese de que esté en funcionamiento.
-3. Configure las propiedades de la aplicación, como la URL de la base de datos y las credenciales, en el archivo de configuración.
-4. Instale las dependencias del proyecto tanto para el backend como para el frontend.
+3. Configure la base de datos MySQL con la configuración adecuada y asegúrese de que esté en funcionamiento.
+4. Configure las propiedades de la aplicación, como la URL de la base de datos y las credenciales, en el archivo de configuración.
+5. Instale las dependencias del proyecto tanto para el backend como para el frontend.
 
 # En el directorio del backend
+```shell
 cd festejando-ando-backend
-
+```
 Run as Spring boot Application 
 
 # En el directorio del frontend
+```shell
 cd ../festejando-ando-frontend
 npm install
 npm start
+```
 
 Abra su navegador web y vaya a http://localhost:3000 para acceder a la aplicación.
 
@@ -82,5 +88,3 @@ Contribuciones son bienvenidas. Si deseas contribuir al proyecto, sigue estos pa
 Si encuentras problemas o tienes preguntas sobre el proyecto, no dudes en abrir un issue en GitHub o ponerte en contacto con el equipo de desarrollo.
 
 ¡Gracias por usar **FESTEJANDO ANDO**! Esperamos que este sistema de alquiler de mobiliario infantil sea útil para ti y tu comunidad.
-
-
