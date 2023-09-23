@@ -30,6 +30,7 @@ public class SecurityConfig extends GlobalAuthenticationConfigurerAdapter  {
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
+            .cors(Customizer.withDefaults())
             .csrf(csrf -> csrf.disable())
             .logout(logout -> logout
                 .logoutUrl("/logout")
