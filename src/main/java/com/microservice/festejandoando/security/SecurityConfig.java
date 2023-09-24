@@ -46,9 +46,9 @@ public class SecurityConfig extends GlobalAuthenticationConfigurerAdapter  {
                 .requestMatchers(new AntPathRequestMatcher("/api/booking/save")).permitAll()
                 .requestMatchers(new AntPathRequestMatcher("/api/client/save")).permitAll()
                 .anyRequest().authenticated())
-                .httpBasic(Customizer.withDefaults())
+            .httpBasic(Customizer.withDefaults())
             .formLogin(formLogin -> formLogin
-                .defaultSuccessUrl("/home"));
+                .disable());
       return http.build();
     }
   
