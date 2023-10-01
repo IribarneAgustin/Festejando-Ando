@@ -15,6 +15,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+//This component is disbled because @EnableScheduling annotation on main. 
+//We used it for development testing
 @Component
 public class HttpCallScheduler {
 
