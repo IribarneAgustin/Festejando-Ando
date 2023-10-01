@@ -56,7 +56,7 @@ public class EmailService {
         helper.setSubject("Solicitud de reserva recibida");
         helper.setText(emailToClient, true);
 
-        mailService.send(mimeMessage);
+        System.out.println("Sending mail from " + appEmail + " to " + clientEmail);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
@@ -82,6 +82,7 @@ public class EmailService {
         message.setTo(appEmail);
         message.setText(emailToAdmin);
         message.setSubject("Solicitud de reserva recibida");
+        System.out.println("Sending mail from " + appEmail + " to " + appEmail);
     }
 
 }
